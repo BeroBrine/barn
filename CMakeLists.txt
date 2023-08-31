@@ -1,7 +1,12 @@
 cmake_minimum_required(VERSION 3.27.4)
 
-project(barn)
+project(barn VERSION 1.0.0 DESCRIPTION "barn - Game Engine" LANGUAGES CXX)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/barn/vendor/spdlog/include)
+add_compile_options(
+    "-Wall" "-Werror"
+)
+
+set(CMAKE_BUILD_TYPE "Debug")
 
 add_library(mylib SHARED src/barn/app.cpp
                         src/barn/Log.cpp)
