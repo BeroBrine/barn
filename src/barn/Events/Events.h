@@ -1,6 +1,8 @@
 #pragma once
-#include "../allHeaders.h"
+#include <../allHeaders.h>
+#include <functional>
 #include <string>
+
 #define BIT(x) (1 << x)
 
 
@@ -9,10 +11,10 @@ namespace barn
     enum class EventType
     {
         none = 0,
-        WindowClose , WindowResize , WindowFocus , WindowLostFocus , WindowMoved,
+        WindowCloseEvent , WindowResizeEvent , WindowFocus , WindowLostFocus , WindowMoved,
         KeyPressed , KeyReleased , KeyTyped , 
         MouseButtonPressed , MouseButtonReleased , MouseMoved , MouseScrolled        
-    }
+    };
 
     enum EventCategory
     {
@@ -23,9 +25,12 @@ namespace barn
         EventCategoryMouse = BIT(3),
         EventCategoryMouseButton = BIT(4)
 
-    }
-#define EVENT_CLASS_TYPE(type) static EventType GetEventType() {return EventType::type}
+    };
+#define EVENT_CLASS_TYPE(type) static EventType GetStaticType() {return EventType::type;} \
+                                virtual EventType GetEventType() const override {return GetStaticType();} \
+                                virtual const char* GetName() const override {return #type;}
 
+#define EVENT_CLASS_CATEGORY(category) virtual int GetCategoryFlags() const override {return category;}
 
     class Event
     {
@@ -57,8 +62,8 @@ namespace barn
             {
                 if(m_Event.GetEventType() == T::GetStaticType())
                 {
-                    m_Event.m_handled = func(*(T*)&m_Event);
-                    return type;
+                    m_Event.m_handled |= func(static_cast<T&>(&m_Event));
+                    return true;
                 }
                 return false;
             }
@@ -66,4 +71,9 @@ namespace barn
         private:
             Event& m_Event;
     };
+
+    inline std::ostream& operator<<(std::ostream& oe , const Event& e)
+    {
+        return oe << e.ToString();
+    }
 }

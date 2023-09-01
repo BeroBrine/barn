@@ -13,7 +13,7 @@ namespace barn
         // setting the level (enums for severity)
         s_coreLogger->set_level(spdlog::level::trace);
         //client loggerW
-        s_clientLogger = spdlog::stdout_color_mt("APP");
+        s_clientLogger = spdlog::stdout_color_mt("App");
         s_clientLogger->set_level(spdlog::level::trace);
     }
 }

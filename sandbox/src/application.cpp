@@ -1,21 +1,25 @@
 #include "allHeaders.h"
+#include "iostream"
 
-class Sandbox : public barn::app
+namespace barn 
 {
-    public:
-        Sandbox()
-        {
-            
-        }
-        ~Sandbox()
-        {
-
-        }
-};
-
-
-barn::app* barn::CreateApplication()
-{
-    return new Sandbox();
+    class Sandbox : public app
+    {
+        public:
+            Sandbox()
+            {
+                std::cout << "the engine has been constructed" << std::endl;
+            }
+            ~Sandbox()
+            {
+    
+            }
+    };
+    
+    
+    app* CreateApplication()
+    {
+        return new Sandbox();
+    }
+    
 }
-

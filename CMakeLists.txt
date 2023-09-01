@@ -11,6 +11,7 @@ set(CMAKE_BUILD_TYPE "Debug")
 add_library(mylib SHARED src/barn/app.cpp
                         src/barn/Log.cpp)
 target_include_directories(mylib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
+target_include_directories(mylib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/barn)
 target_include_directories(mylib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/barn/vendor/spdlog/include/spdlog)
 
 add_executable(barn ${CMAKE_CURRENT_SOURCE_DIR}/sandbox/src/application.cpp)
