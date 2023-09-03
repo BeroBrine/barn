@@ -1,0 +1,6 @@
+[submodule "/home/abhishek/Pictures/barn/src/barn/vendor/spdlog"]
+	path = /home/abhishek/Pictures/barn/src/barn/vendor/spdlog
+	url = https://github.com/gabime/spdlog
+[submodule "/home/abhishek/Pictures/barn/src/barn/vendor/glfw"]
+	path = /home/abhishek/Pictures/barn/src/barn/vendor/glfw
+	url = https://github.com/glfw/glfw

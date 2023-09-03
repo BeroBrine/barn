@@ -13,7 +13,6 @@ namespace barn
 
     linuxWindow::~linuxWindow()
     {
-        std::cout << "destructor" << std::endl;
         shutdown();
     }
 

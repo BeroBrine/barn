@@ -19,13 +19,16 @@ src/platform/linuxWindow.cpp
 
 add_executable(${PROJECT_NAME} ${CMAKE_CURRENT_SOURCE_DIR}/sandbox/src/application.cpp)
 target_include_directories(mylib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
-target_include_directories(mylib PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/barn)
-target_include_directories(mylib PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}src/barn/vendor/spdlog/include)
-target_include_directories(mylib PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/barn/vendor/glfw/include)
-target_include_directories(mylib PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/platform)
+target_include_directories(mylib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/barn)
+target_include_directories(mylib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}src/barn/vendor/spdlog/include)
+target_include_directories(mylib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/barn/vendor/glfw/include)
+target_include_directories(mylib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/platform)
+target_include_directories(mylib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/barn/vendor/glfw/deps/glad)
 
-target_link_libraries(barn PRIVATE mylib glfw)
-target_link_directories(barn PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/build/src/barn/vendor/glfw/src)
+
+target_link_libraries(barn PUBLIC mylib glfw GL GLU glut)
+target_link_directories(barn PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/build/src/barn/vendor/glfw/src)
+target_link_directories(barn PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/build/src/barn/vendor/glfw/deps)
 
 
 
