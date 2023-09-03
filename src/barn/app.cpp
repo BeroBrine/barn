@@ -1,15 +1,18 @@
-#include "app.h"
-#include "Events/ApplicationEvent.h"
-#include "Events/MouseEvent.h"
-#include "Log.h"
+#include <memory>
+#include "entryPoint.h"
+#include <iostream>
 namespace barn
 {
+    app::app()
+    {
+        m_window = std::unique_ptr<window>(window::create());
+    }
     void app::run()
     {
-        WindowResizeEvent e(1920 , 342);
-        _CORE_TRACE(e);
-        while(true);
-
+        while(true)
+        {
+            m_window->onUpdate();
+        }
     }
     
 }

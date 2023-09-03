@@ -1,5 +1,4 @@
 #pragma once
-#include <../allHeaders.h>
 #include <functional>
 #include <string>
 

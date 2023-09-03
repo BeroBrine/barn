@@ -1,6 +1,21 @@
 #pragma once
+#include <memory>
 #include "Log.h"
-extern barn::app* barn::CreateApplication();
+#include "window.h"
+
+namespace barn 
+{
+    class app
+    {
+        public: 
+            app();
+            void run();
+        private:
+            std::unique_ptr<window> m_window;
+            bool m_running = true;
+    };
+    app* CreateApplication();  
+}
 
 int main(int argc , char** argv)
 {
