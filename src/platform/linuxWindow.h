@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../barn/window.h"
-#include <GLFW/glfw3.h>
+#include "barnpch.h"
 
 
 namespace barn

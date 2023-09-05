@@ -2,20 +2,28 @@
 #include <memory>
 #include "Log.h"
 #include "window.h"
-
-namespace barn 
+#include "barn/Events/ApplicationEvent.h"
+namespace barn
 {
-    class app
+
+    class app 
     {
-        public: 
+        public:
             app();
             void run();
+            void onEvent(Event&);
+
         private:
             std::unique_ptr<window> m_window;
+            bool OnWindowClose(WindowCloseEvent& e);
+
             bool m_running = true;
     };
-    app* CreateApplication();  
+
+    app* CreateApplication();
 }
+
+
 
 int main(int argc , char** argv)
 {

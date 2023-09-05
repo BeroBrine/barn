@@ -1,8 +1,7 @@
 #pragma once
 
 #include "Events/Events.h"
-#include <string>
-#include <functional>
+#include "barnpch.h"
 
 namespace barn
 {
@@ -12,7 +11,7 @@ namespace barn
         unsigned int width;
         unsigned int height;
 
-        windowProp(const std::string &title = "hazel engine" , 
+        windowProp(const std::string &title = "barn engine" , 
                         unsigned int width = 1280 , 
                         unsigned int height = 720)
                     : title(title) , width(width) , height(height) {}
