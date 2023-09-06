@@ -22,8 +22,6 @@ namespace barn
         public:
             using EventCallBackFn = std::function<void(Event&)>;
 
-            
-
             virtual void onUpdate() const = 0;
 
             virtual unsigned int GetWidth() const = 0;

@@ -1,23 +1,25 @@
 #pragma once
+#include "Events/Events.h"
 
-#include "barn/Events/Events.h"
-
-namespace hazel
+namespace barn
 {
     class layer
     {
-        layer(const std::string name = "layer");
-        virtual ~layer();
+        public:
 
-        virtual void onAttach() {}
-        virtual void onDetach() {}
-        virtual void onUpdate() {}
-        virtual void onEvent(Event& event) {} 
+            layer(const std::string& name = "layer");
+            virtual ~layer() {};
 
-        inline const std::string GetName() const { return m_debugName;}
+            virtual void onAttach() {}
+            virtual void onDetach() {}
+            virtual void onUpdate() {}
+
+            virtual void onEvent(Event& event) {} 
+
+            inline const std::string GetName() const { return m_debugName;}
 
         protected:
-            std::string m_deugName;
-    }
+            std::string m_debugName;
+    };
 
 }

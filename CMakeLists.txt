@@ -15,6 +15,8 @@ add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/src/barn/vendor/glfw)
 add_library(mylib SHARED src/barn/app.cpp
 src/barn/Log.cpp
 src/platform/linuxWindow.cpp
+src/barn/layerStack.cpp
+src/barn/layer.cpp
 )
 
 add_executable(${PROJECT_NAME} ${CMAKE_CURRENT_SOURCE_DIR}/sandbox/src/application.cpp)
